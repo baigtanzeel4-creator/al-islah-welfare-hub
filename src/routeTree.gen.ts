@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelfareRouteImport } from './routes/welfare'
 import { Route as VerificationRouteImport } from './routes/verification'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as DonationRouteImport } from './routes/donation'
@@ -27,6 +28,11 @@ const WelfareRoute = WelfareRouteImport.update({
 const VerificationRoute = VerificationRouteImport.update({
   id: '/verification',
   path: '/verification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/donation': typeof DonationRoute
   '/gallery': typeof GalleryRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verification': typeof VerificationRoute
   '/welfare': typeof WelfareRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/donation': typeof DonationRoute
   '/gallery': typeof GalleryRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verification': typeof VerificationRoute
   '/welfare': typeof WelfareRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/donation': typeof DonationRoute
   '/gallery': typeof GalleryRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verification': typeof VerificationRoute
   '/welfare': typeof WelfareRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/donation'
     | '/gallery'
     | '/pricing'
+    | '/sitemap.xml'
     | '/verification'
     | '/welfare'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/donation'
     | '/gallery'
     | '/pricing'
+    | '/sitemap.xml'
     | '/verification'
     | '/welfare'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/donation'
     | '/gallery'
     | '/pricing'
+    | '/sitemap.xml'
     | '/verification'
     | '/welfare'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   DonationRoute: typeof DonationRoute
   GalleryRoute: typeof GalleryRoute
   PricingRoute: typeof PricingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VerificationRoute: typeof VerificationRoute
   WelfareRoute: typeof WelfareRoute
 }
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/verification'
       fullPath: '/verification'
       preLoaderRoute: typeof VerificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   DonationRoute: DonationRoute,
   GalleryRoute: GalleryRoute,
   PricingRoute: PricingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   VerificationRoute: VerificationRoute,
   WelfareRoute: WelfareRoute,
 }
