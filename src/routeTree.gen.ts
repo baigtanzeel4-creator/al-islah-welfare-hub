@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelfareRouteImport } from './routes/welfare'
+import { Route as VerificationRouteImport } from './routes/verification'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as AboutRouteImport } from './routes/about'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const WelfareRoute = WelfareRouteImport.update({
   id: '/welfare',
   path: '/welfare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerificationRoute = VerificationRouteImport.update({
+  id: '/verification',
+  path: '/verification',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/courses': typeof CoursesRoute
   '/pricing': typeof PricingRoute
+  '/verification': typeof VerificationRoute
   '/welfare': typeof WelfareRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/courses': typeof CoursesRoute
   '/pricing': typeof PricingRoute
+  '/verification': typeof VerificationRoute
   '/welfare': typeof WelfareRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,28 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/courses': typeof CoursesRoute
   '/pricing': typeof PricingRoute
+  '/verification': typeof VerificationRoute
   '/welfare': typeof WelfareRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/courses' | '/pricing' | '/welfare'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/courses'
+    | '/pricing'
+    | '/verification'
+    | '/welfare'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/courses' | '/pricing' | '/welfare'
-  id: '__root__' | '/' | '/about' | '/courses' | '/pricing' | '/welfare'
+  to: '/' | '/about' | '/courses' | '/pricing' | '/verification' | '/welfare'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/courses'
+    | '/pricing'
+    | '/verification'
+    | '/welfare'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +98,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CoursesRoute: typeof CoursesRoute
   PricingRoute: typeof PricingRoute
+  VerificationRoute: typeof VerificationRoute
   WelfareRoute: typeof WelfareRoute
 }
 
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/welfare'
       fullPath: '/welfare'
       preLoaderRoute: typeof WelfareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verification': {
+      id: '/verification'
+      path: '/verification'
+      fullPath: '/verification'
+      preLoaderRoute: typeof VerificationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -124,6 +154,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CoursesRoute: CoursesRoute,
   PricingRoute: PricingRoute,
+  VerificationRoute: VerificationRoute,
   WelfareRoute: WelfareRoute,
 }
 export const routeTree = rootRouteImport
