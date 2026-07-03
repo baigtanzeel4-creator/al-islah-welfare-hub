@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { WhatsAppIcon, WA_LINK } from "@/routes/__root";
+import { WhatsAppIcon, WA_LINK } from "@/lib/contact";
 import type { ReactNode } from "react";
 
 export function PageHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title: string; subtitle?: string }) {

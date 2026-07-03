@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CtaBanner, PageHeader, Section, SectionHeading, Card } from "@/components/site";
-import { PHONE, WA_LINK, WhatsAppIcon } from "./__root";
+import { PHONE, WA_LINK, WhatsAppIcon } from "@/lib/contact";
 
 export const Route = createFileRoute("/donation")({
   head: () => ({ meta: [

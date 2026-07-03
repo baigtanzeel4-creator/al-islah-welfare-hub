@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CtaBanner, PageHeader, Section, SectionHeading } from "@/components/site";
-import { PHONE, WA_LINK, WhatsAppIcon } from "./__root";
+import { PHONE, WA_LINK, WhatsAppIcon } from "@/lib/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({ meta: [

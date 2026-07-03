@@ -4,7 +4,7 @@ import hero from "@/assets/hero.jpg";
 import gEducation from "@/assets/g-education.jpg";
 import gRation from "@/assets/g-ration.jpg";
 import { CtaBanner, Card, SectionHeading, Section } from "@/components/site";
-import { WhatsAppIcon, WA_LINK } from "./__root";
+import { WhatsAppIcon, WA_LINK } from "@/lib/contact";
 
 export const Route = createFileRoute("/")({
   component: Index,

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { CtaBanner, PageHeader, Section, SectionHeading, Card } from "@/components/site";
-import { WA_LINK, WhatsAppIcon } from "./__root";
+import { WA_LINK, WhatsAppIcon } from "@/lib/contact";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({ meta: [
