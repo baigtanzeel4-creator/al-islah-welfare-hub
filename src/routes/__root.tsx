@@ -102,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,
@@ -147,12 +147,13 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logo} alt="Al-Islah Institute" width={44} height={44} className="h-11 w-11" />
-          <div className="leading-tight">
-            <div className="font-serif text-lg font-semibold text-[color:var(--maroon)]">Al-Islah Institute</div>
-            <div className="text-[11px] uppercase tracking-[0.18em] text-[color:var(--gold)]">Welfare · Quran Academy</div>
-          </div>
+        <Link to="/" className="flex items-center" onClick={() => setOpen(false)} aria-label="Al-Islah Institute — Home">
+          <img
+            src={logo}
+            alt="Al-Islah Institute"
+            className="h-14 w-auto md:h-20"
+            style={{ maxWidth: 240 }}
+          />
         </Link>
         <nav className="hidden items-center gap-1 xl:flex">
           {NAV.map((n) => (
@@ -201,9 +202,8 @@ function SiteFooter() {
     <footer className="mt-24 border-t border-border bg-[color:var(--maroon)] text-[color:var(--cream)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4 md:px-8">
         <div>
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="" width={44} height={44} className="h-11 w-11" />
-            <div className="font-serif text-xl text-white">Al-Islah Institute</div>
+          <div className="inline-flex rounded-xl bg-[color:var(--cream)] p-3">
+            <img src={logo} alt="Al-Islah Institute" className="h-16 w-auto" style={{ maxWidth: 200 }} />
           </div>
           <p className="mt-4 text-sm leading-relaxed text-[color:var(--cream)]/80">
             Serving humanity with dignity, education, and Islamic values. Every case is verified before support is provided.
