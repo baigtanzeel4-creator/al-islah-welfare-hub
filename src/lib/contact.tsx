@@ -1,6 +1,26 @@
 export const PHONE = "+923162569460";
 export const WA_LINK = "https://wa.me/923162569460";
 
+/** Build a wa.me link with a URL-encoded pre-filled message. */
+export function waMessageLink(message: string): string {
+  return `https://wa.me/923162569460?text=${encodeURIComponent(message)}`;
+}
+
+export const WA_PRESETS = {
+  enroll: (course?: string) =>
+    `Assalamu Alaikum Al-Islah Institute,\n\nI would like to enroll in an online course${course ? `: ${course}` : ""}.\nPlease share the schedule and next steps.\n\nJazakAllah Khair.`,
+  trial: () =>
+    `Assalamu Alaikum Al-Islah Institute,\n\nI would like to book a FREE trial class.\nPreferred course:\nPreferred timing:\nCountry / Timezone:\n\nJazakAllah Khair.`,
+  donate: (option?: string) =>
+    `Assalamu Alaikum Al-Islah Institute,\n\nI would like to make a donation${option ? ` (${option})` : ""}.\nPlease share the payment details.\n\nJazakAllah Khair.`,
+  help: () =>
+    `Assalamu Alaikum Al-Islah Institute,\n\nI would like to request welfare help.\nName:\nCity / Country:\nType of help needed (ration / marriage / mosque / medical / other):\nBrief situation:\n\nJazakAllah Khair.`,
+  needyStudent: () =>
+    `Assalamu Alaikum Al-Islah Institute,\n\nI would like to apply for a FREE / discounted Islamic education seat.\nStudent name & age:\nCountry / City:\nCourse required:\nBrief situation:\n\nJazakAllah Khair.`,
+  contact: () =>
+    `Assalamu Alaikum Al-Islah Institute,\n\nI would like to get in touch.\n\nJazakAllah Khair.`,
+};
+
 export function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
