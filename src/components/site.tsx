@@ -1,5 +1,4 @@
-import { Link } from "@tanstack/react-router";
-import { WhatsAppIcon, WA_LINK } from "@/lib/contact";
+import { WhatsAppIcon, WA_LINK, waMessageLink, WA_PRESETS } from "@/lib/contact";
 import type { ReactNode } from "react";
 
 export function PageHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title: string; subtitle?: string }) {
@@ -41,7 +40,7 @@ export function CtaBanner() {
           Aap ka aik chota sa hissa kisi zarurat mand ki zindagi badal sakta hai — izzat aur amanat ke sath.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/donation" className="btn-gold">Donate Now</Link>
+          <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" className="btn-gold"><WhatsAppIcon /> Donate Now</a>
           <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp"><WhatsAppIcon /> Contact on WhatsApp</a>
         </div>
       </div>

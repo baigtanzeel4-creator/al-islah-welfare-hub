@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CtaBanner, PageHeader, Section, SectionHeading, Card } from "@/components/site";
-import { WA_LINK, WhatsAppIcon } from "@/lib/contact";
+import { WA_LINK, WhatsAppIcon, waMessageLink, WA_PRESETS } from "@/lib/contact";
 
 export const Route = createFileRoute("/courses")({
   head: () => ({ meta: [
@@ -65,7 +65,7 @@ function Courses() {
             <h3 className="font-serif text-2xl">Book your Free Trial Class</h3>
             <p className="mt-2 text-sm text-muted-foreground">Share your preferred timing and course — a teacher will contact you on WhatsApp.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp"><WhatsAppIcon /> Book on WhatsApp</a>
+              <a href={waMessageLink(WA_PRESETS.trial())} target="_blank" rel="noreferrer" className="btn-whatsapp"><WhatsAppIcon /> Book Free Trial Class</a>
               <Link to="/pricing" className="btn-outline-maroon">See Pricing</Link>
             </div>
           </div>

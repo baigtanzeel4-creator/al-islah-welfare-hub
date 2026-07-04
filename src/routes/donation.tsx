@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CtaBanner, PageHeader, Section, SectionHeading, Card } from "@/components/site";
-import { PHONE, WA_LINK, WhatsAppIcon } from "@/lib/contact";
+import { PHONE, WA_LINK, WhatsAppIcon, waMessageLink, WA_PRESETS } from "@/lib/contact";
 
 export const Route = createFileRoute("/donation")({
   head: () => ({ meta: [
@@ -33,7 +33,7 @@ function Donation() {
               <h3 className="font-serif text-lg">{o.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{o.d}</p>
               <div className="mt-5 flex flex-wrap gap-2">
-                <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-gold !py-2 !px-4 text-sm">Donate</a>
+                <a href={waMessageLink(WA_PRESETS.donate(o.t))} target="_blank" rel="noreferrer" className="btn-gold !py-2 !px-4 text-sm">Donate Now</a>
                 <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp !py-2 !px-4 text-sm"><WhatsAppIcon /> WhatsApp</a>
               </div>
             </Card>

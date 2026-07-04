@@ -4,7 +4,7 @@ import hero from "@/assets/hero.jpg";
 import gEducation from "@/assets/g-education.jpg";
 import gRation from "@/assets/g-ration.jpg";
 import { CtaBanner, Card, SectionHeading, Section } from "@/components/site";
-import { WhatsAppIcon, WA_LINK } from "@/lib/contact";
+import { WhatsAppIcon, WA_LINK, waMessageLink, WA_PRESETS } from "@/lib/contact";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -52,9 +52,9 @@ function Index() {
               Hum zarurat mand logon ki madad izzat, amanat aur proper verification ke sath karte hain.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/donation" className="btn-gold">Donate Now</Link>
-              <Link to="/contact" className="btn-outline-maroon">Request Help</Link>
-              <Link to="/courses" className="btn-outline-maroon">Book Free Trial Class</Link>
+              <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" className="btn-gold"><WhatsAppIcon /> Donate Now</a>
+              <a href={waMessageLink(WA_PRESETS.help())} target="_blank" rel="noreferrer" className="btn-outline-maroon">Request Help</a>
+              <a href={waMessageLink(WA_PRESETS.trial())} target="_blank" rel="noreferrer" className="btn-outline-maroon">Book Free Trial Class</a>
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp"><WhatsAppIcon/> WhatsApp</a>
             </div>
           </div>
@@ -110,7 +110,7 @@ function Index() {
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/verification" className="btn-outline-maroon">See Verification Process</Link>
-              <Link to="/donation" className="btn-gold">Donate Now</Link>
+              <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" className="btn-gold"><WhatsAppIcon /> Donate Now</a>
             </div>
           </div>
         </div>
