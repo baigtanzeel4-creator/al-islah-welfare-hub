@@ -12,7 +12,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import logo from "@/assets/logo.png";
-import { PHONE, WA_LINK, WhatsAppIcon } from "@/lib/contact";
+import { PHONE, WA_LINK, WhatsAppIcon, waMessageLink, WA_PRESETS } from "@/lib/contact";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -171,7 +171,7 @@ function SiteHeader() {
           <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp !py-2 !px-4 text-sm">
             <WhatsAppIcon /> WhatsApp
           </a>
-          <Link to="/donation" className="btn-gold !py-2 !px-4 text-sm">Donate Now</Link>
+          <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" className="btn-gold !py-2 !px-4 text-sm">Donate Now</a>
         </div>
         <button aria-label="Toggle menu" className="rounded-full border border-border p-2 xl:hidden" onClick={() => setOpen((v) => !v)}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -187,7 +187,7 @@ function SiteHeader() {
             ))}
             <div className="mt-2 flex gap-2">
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp !py-2 !px-4 text-sm flex-1"><WhatsAppIcon /> WhatsApp</a>
-              <Link to="/donation" onClick={() => setOpen(false)} className="btn-gold !py-2 !px-4 text-sm flex-1">Donate</Link>
+              <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="btn-gold !py-2 !px-4 text-sm flex-1">Donate</a>
             </div>
           </div>
         </div>
@@ -235,7 +235,7 @@ function SiteFooter() {
             <li>Phone / WhatsApp:<br/><a href={`tel:${PHONE}`} className="text-[color:var(--gold)]">{PHONE}</a></li>
           </ul>
           <div className="mt-4 flex flex-wrap gap-2">
-            <Link to="/donation" className="btn-gold !py-2 !px-4 text-sm">Donate</Link>
+            <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" className="btn-gold !py-2 !px-4 text-sm">Donate</a>
             <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp !py-2 !px-4 text-sm"><WhatsAppIcon/> WhatsApp</a>
           </div>
         </div>

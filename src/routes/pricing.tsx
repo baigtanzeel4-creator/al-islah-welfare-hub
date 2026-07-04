@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { CtaBanner, PageHeader, Section, SectionHeading, Card } from "@/components/site";
-import { WA_LINK, WhatsAppIcon } from "@/lib/contact";
+import { WA_LINK, WhatsAppIcon, waMessageLink, WA_PRESETS } from "@/lib/contact";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({ meta: [
@@ -120,7 +120,7 @@ function Pricing() {
                   ))}
                 </ul>
                 <div className="mt-8 flex flex-wrap gap-2">
-                  <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-gold !py-2 !px-4 text-sm">Enroll Now</a>
+                  <a href={waMessageLink(WA_PRESETS.enroll(p.name))} target="_blank" rel="noreferrer" className="btn-gold !py-2 !px-4 text-sm">Enroll Now</a>
                   <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp !py-2 !px-4 text-sm"><WhatsAppIcon /> WhatsApp</a>
                 </div>
               </div>
@@ -145,7 +145,7 @@ function Pricing() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Link to="/verification" className="btn-outline-maroon">Apply for supported seat</Link>
+          <a href={waMessageLink(WA_PRESETS.needyStudent())} target="_blank" rel="noreferrer" className="btn-outline-maroon">Apply for Free / Discounted Education</a>
         </div>
       </Section>
       <CtaBanner />
