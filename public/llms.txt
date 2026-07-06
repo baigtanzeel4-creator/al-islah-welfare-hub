@@ -1,0 +1,15 @@
+# Al-Islah Institute
+
+> Islamic welfare foundation and online Quran academy — verified support for needy families, and one-to-one online classes in Quran, Tafseer, Hadith, Hifz and Islamic studies with qualified male and female teachers.
+
+## Pages
+
+- [Home](/): Mission, services, and impact of Al-Islah Institute.
+- [About](/about): Our values, mission, and Islamic principles behind the foundation.
+- [Welfare Services](/welfare): Ration, marriage, mosque, education and emergency support for verified families.
+- [Courses](/courses): Online Quran, Tafseer, Hadith, Hifz, Muallima and Islamic Studies courses.
+- [Pricing](/pricing): Country-based fees for online Quran classes with free trial.
+- [Verification](/verification): The five-step process we follow before delivering any support.
+- [Donation](/donation): Sponsor a student, ration, marriage, mosque or general donation.
+- [Gallery](/gallery): Photos from our education and welfare work.
+- [Contact](/contact): Phone, WhatsApp and enquiry form.

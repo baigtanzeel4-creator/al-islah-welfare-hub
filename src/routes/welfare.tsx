@@ -7,7 +7,8 @@ export const Route = createFileRoute("/welfare")({
     { name: "description", content: "Islamic and modern education, ration support, marriage support, mosque construction, help for widows and orphans, and more — all after proper verification." },
     { property: "og:title", content: "Welfare Services — Al-Islah Institute" },
     { property: "og:description", content: "All support is provided to verified deserving families with dignity and privacy." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/welfare" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/welfare" }]}),
   component: Welfare,
 });
 

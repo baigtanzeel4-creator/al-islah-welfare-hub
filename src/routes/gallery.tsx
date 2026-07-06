@@ -12,17 +12,18 @@ export const Route = createFileRoute("/gallery")({
     { name: "description", content: "Moments from our education, ration distribution, mosque support, marriage support and community welfare work." },
     { property: "og:title", content: "Gallery — Al-Islah Institute" },
     { property: "og:description", content: "Real work, delivered respectfully." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/gallery" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/gallery" }]}),
   component: Gallery,
 });
 
 const ITEMS = [
-  { src: edu, label: "Education" },
-  { src: ration, label: "Ration Distribution" },
-  { src: mosque, label: "Mosque Support" },
-  { src: marriage, label: "Marriage Support" },
-  { src: community, label: "Community Welfare" },
-  { src: edu, label: "Quran Teaching" },
+  { src: edu, label: "Islamic education classes for children" },
+  { src: ration, label: "Ration distribution to needy families" },
+  { src: mosque, label: "Mosque construction and repair support" },
+  { src: marriage, label: "Marriage support for poor daughters" },
+  { src: community, label: "Community welfare and outreach" },
+  { src: edu, label: "Students learning Quran online" },
 ];
 
 function Gallery() {

@@ -7,6 +7,12 @@ import { CtaBanner, Card, SectionHeading, Section } from "@/components/site";
 import { WhatsAppIcon, WA_LINK, waMessageLink, WA_PRESETS } from "@/lib/contact";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/" }],
+  }),
   component: Index,
 });
 
@@ -36,7 +42,7 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={hero} alt="" width={1600} height={1024} className="h-full w-full object-cover" />
+          <img src={hero} alt="" width={1600} height={1024} fetchPriority="high" decoding="async" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--background)] via-[color:var(--background)]/85 to-transparent" />
           <div className="absolute inset-0 pattern-bg opacity-30" />
         </div>

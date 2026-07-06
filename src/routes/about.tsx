@@ -8,7 +8,8 @@ export const Route = createFileRoute("/about")({
     { name: "description", content: "Al-Islah Institute works under Islamic values to support poor and needy families. Every case is verified before help is provided." },
     { property: "og:title", content: "About Al-Islah Institute" },
     { property: "og:description", content: "Serving humanity through Islamic education, welfare support, and responsible community service." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/about" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/about" }]}),
   component: About,
 });
 
