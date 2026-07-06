@@ -9,7 +9,8 @@ export const Route = createFileRoute("/contact")({
     { name: "description", content: "Contact Al-Islah Institute for donations, welfare requests, or to book a free trial Quran class." },
     { property: "og:title", content: "Contact Al-Islah Institute" },
     { property: "og:description", content: "Phone / WhatsApp: +92 316 2569460" },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/contact" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/contact" }]}),
   component: Contact,
 });
 
@@ -87,33 +88,39 @@ JazakAllah Khair.`;
             <form className="mt-8 grid gap-4" onSubmit={onSubmit} noValidate>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <input value={form.name} onChange={update("name")} placeholder="Full Name *" className={inputCls + " w-full"} />
+                  <label htmlFor="c-name" className="mb-1 block text-xs font-medium text-[color:var(--maroon)]">Full Name *</label>
+                  <input id="c-name" name="name" autoComplete="name" value={form.name} onChange={update("name")} placeholder="Full Name *" className={inputCls + " w-full"} />
                   {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
                 </div>
                 <div>
-                  <input value={form.whatsapp} onChange={update("whatsapp")} placeholder="WhatsApp Number *" className={inputCls + " w-full"} />
+                  <label htmlFor="c-whatsapp" className="mb-1 block text-xs font-medium text-[color:var(--maroon)]">WhatsApp Number *</label>
+                  <input id="c-whatsapp" name="whatsapp" type="tel" autoComplete="tel" value={form.whatsapp} onChange={update("whatsapp")} placeholder="WhatsApp Number *" className={inputCls + " w-full"} />
                   {errors.whatsapp && <p className="mt-1 text-xs text-red-600">{errors.whatsapp}</p>}
                 </div>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <input value={form.email} onChange={update("email")} type="email" placeholder="Email Address (optional)" className={inputCls + " w-full"} />
+                  <label htmlFor="c-email" className="mb-1 block text-xs font-medium text-[color:var(--maroon)]">Email Address</label>
+                  <input id="c-email" name="email" autoComplete="email" value={form.email} onChange={update("email")} type="email" placeholder="Email Address (optional)" className={inputCls + " w-full"} />
                   {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
                 </div>
                 <div>
-                  <input value={form.country} onChange={update("country")} placeholder="Country *" className={inputCls + " w-full"} />
+                  <label htmlFor="c-country" className="mb-1 block text-xs font-medium text-[color:var(--maroon)]">Country *</label>
+                  <input id="c-country" name="country" autoComplete="country-name" value={form.country} onChange={update("country")} placeholder="Country *" className={inputCls + " w-full"} />
                   {errors.country && <p className="mt-1 text-xs text-red-600">{errors.country}</p>}
                 </div>
               </div>
               <div>
-                <select value={form.type} onChange={update("type")} className={inputCls + " w-full"}>
+                <label htmlFor="c-type" className="mb-1 block text-xs font-medium text-[color:var(--maroon)]">Enquiry Type *</label>
+                <select id="c-type" name="type" value={form.type} onChange={update("type")} className={inputCls + " w-full"}>
                   <option value="">Enquiry Type *</option>
                   {ENQUIRY_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
                 {errors.type && <p className="mt-1 text-xs text-red-600">{errors.type}</p>}
               </div>
               <div>
-                <textarea value={form.message} onChange={update("message")} rows={5} placeholder="Your Message *" className={inputCls + " w-full"} />
+                <label htmlFor="c-message" className="mb-1 block text-xs font-medium text-[color:var(--maroon)]">Your Message *</label>
+                <textarea id="c-message" name="message" value={form.message} onChange={update("message")} rows={5} placeholder="Your Message *" className={inputCls + " w-full"} />
                 {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
               </div>
               <div className="flex flex-wrap items-center gap-3">

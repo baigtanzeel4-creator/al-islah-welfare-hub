@@ -5,11 +5,12 @@ import { WA_LINK, WhatsAppIcon, waMessageLink, WA_PRESETS } from "@/lib/contact"
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({ meta: [
-    { title: "Pricing — Online Quran & Islamic Courses | Al-Islah Institute" },
+    { title: "Online Quran Course Pricing — Al-Islah Institute" },
     { name: "description", content: "Country-based pricing for online Quran classes. 2, 3 and 5 days per week plans. Free trial class available. Verified needy students supported." },
     { property: "og:title", content: "Pricing — Al-Islah Institute" },
     { property: "og:description", content: "See fees automatically in your local currency. Change country anytime." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/pricing" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/pricing" }]}),
   component: Pricing,
 });
 

@@ -4,11 +4,12 @@ import { PHONE, WA_LINK, WhatsAppIcon, waMessageLink, WA_PRESETS } from "@/lib/c
 
 export const Route = createFileRoute("/donation")({
   head: () => ({ meta: [
-    { title: "Donate — Support Verified Needy Families | Al-Islah Institute" },
+    { title: "Donate to Support Needy Families — Al-Islah Institute" },
     { name: "description", content: "Sponsor a student, provide ration to a family, support a daughter's marriage, help build a mosque, or make a general donation." },
     { property: "og:title", content: "Donate — Al-Islah Institute" },
     { property: "og:description", content: "All donations are used responsibly for verified deserving people." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/donation" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/donation" }]}),
   component: Donation,
 });
 

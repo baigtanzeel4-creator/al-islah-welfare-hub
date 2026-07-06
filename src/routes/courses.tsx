@@ -8,7 +8,8 @@ export const Route = createFileRoute("/courses")({
     { name: "description", content: "Learn Quran with Tajweed, Tafseer, Hadith, Hifz-ul-Quran, and Muallima courses online with qualified male and female teachers." },
     { property: "og:title", content: "Online Quran & Islamic Courses" },
     { property: "og:description", content: "One-to-one online classes for Pakistan, UAE, Saudi Arabia, UK, USA, Canada, Europe, Australia, India and Bangladesh." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/courses" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/courses" }]}),
   component: Courses,
 });
 

@@ -7,7 +7,8 @@ export const Route = createFileRoute("/verification")({
     { name: "description", content: "How Al-Islah Institute verifies every request for support — with dignity, privacy, and responsibility." },
     { property: "og:title", content: "Verification Process — Al-Islah Institute" },
     { property: "og:description", content: "Application, local verification, approval, and respectful delivery of support." },
-  ]}),
+    { property: "og:url", content: "https://alislah-foundation-hub.lovable.app/verification" },
+  ], links: [{ rel: "canonical", href: "https://alislah-foundation-hub.lovable.app/verification" }]}),
   component: Verification,
 });
 
