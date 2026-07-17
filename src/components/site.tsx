@@ -3,13 +3,16 @@ import type { ReactNode } from "react";
 
 export function PageHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title: string; subtitle?: string }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-[color:var(--cream)]/40">
-      <div className="absolute inset-0 pattern-bg opacity-40" aria-hidden />
-      <div className="relative mx-auto max-w-5xl px-4 py-16 text-center md:px-8 md:py-24">
-        {eyebrow && <div className="mb-3 text-xs uppercase tracking-[0.24em] text-[color:var(--gold)]">{eyebrow}</div>}
-        <h1 className="font-serif text-4xl md:text-5xl">{title}</h1>
-        <span className="divider-gold mt-4" />
-        {subtitle && <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">{subtitle}</p>}
+    <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-[color:var(--cream)]/60 via-[color:var(--background)] to-[color:var(--background)]">
+      <div className="absolute inset-0 pattern-bg opacity-30" aria-hidden />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--gold)]/50 to-transparent" aria-hidden />
+      <div className="relative mx-auto max-w-5xl px-4 py-20 text-center md:px-8 md:py-28">
+        {eyebrow && <div className="fade-up mb-4 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">{eyebrow}</div>}
+        <h1 className="fade-up delay-1 font-serif text-[2.5rem] leading-[1.05] md:text-6xl">{title}</h1>
+        <div className="fade-up delay-2 mt-5 flex justify-center">
+          <span className="divider-ornament text-sm">۞</span>
+        </div>
+        {subtitle && <p className="fade-up delay-3 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{subtitle}</p>}
       </div>
     </section>
   );
@@ -22,10 +25,14 @@ export function Section({ children, className = "" }: { children: ReactNode; cla
 export function SectionHeading({ eyebrow, title, subtitle, center = true }: { eyebrow?: string; title: string; subtitle?: string; center?: boolean }) {
   return (
     <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      {eyebrow && <div className="mb-2 text-xs uppercase tracking-[0.24em] text-[color:var(--gold)]">{eyebrow}</div>}
-      <h2 className="font-serif text-3xl md:text-4xl">{title}</h2>
-      {center && <span className="divider-gold mt-3" />}
-      {subtitle && <p className="mt-4 text-muted-foreground">{subtitle}</p>}
+      {eyebrow && <div className="mb-3 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">{eyebrow}</div>}
+      <h2 className="font-serif text-3xl leading-[1.1] md:text-5xl">{title}</h2>
+      {center && (
+        <div className="mt-4 flex justify-center">
+          <span className="divider-ornament text-sm">۞</span>
+        </div>
+      )}
+      {subtitle && <p className="mt-4 leading-relaxed text-muted-foreground">{subtitle}</p>}
     </div>
   );
 }

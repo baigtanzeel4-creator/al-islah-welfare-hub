@@ -65,7 +65,7 @@
   --color-golden: var(--golden);
   --color-softgray: var(--softgray);
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Karla", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -158,8 +158,16 @@
   h1, h2, h3, h4, .font-serif {
     font-family: var(--font-serif);
     color: var(--maroon);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    line-height: 1.12;
   }
+  body {
+    font-feature-settings: "ss01", "kern";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: color-mix(in oklab, var(--gold) 55%, transparent); color: var(--maroon); }
 }
 
 @utility pattern-bg {
@@ -221,7 +229,13 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 1rem;
-  box-shadow: 0 1px 2px rgba(72,54,47,.04), 0 12px 32px -20px rgba(72,54,47,.18);
+  box-shadow: 0 1px 2px rgba(72,54,47,.04), 0 18px 40px -24px rgba(72,54,47,.18);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+  &:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--gold) 45%, var(--border));
+    box-shadow: 0 2px 4px rgba(72,54,47,.05), 0 30px 60px -28px rgba(72,54,47,.28);
+  }
 }
 
 @utility divider-gold {
@@ -230,3 +244,68 @@
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
+
+@utility divider-ornament {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  color: var(--gold);
+  &::before, &::after {
+    content: "";
+    display: inline-block;
+    width: 56px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 80%, transparent), transparent);
+  }
+}
+
+@utility gold-underline {
+  background-image: linear-gradient(90deg, var(--gold), var(--golden));
+  background-repeat: no-repeat;
+  background-size: 100% 6px;
+  background-position: 0 92%;
+  padding: 0 .12em;
+}
+
+@utility fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@utility fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+@utility delay-1 { animation-delay: .1s; }
+@utility delay-2 { animation-delay: .25s; }
+@utility delay-3 { animation-delay: .4s; }
+@utility delay-4 { animation-delay: .55s; }
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+}
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@utility hero-vignette {
+  background:
+    radial-gradient(120% 80% at 20% 30%, color-mix(in oklab, var(--background) 92%, transparent) 0%, color-mix(in oklab, var(--background) 70%, transparent) 45%, transparent 75%),
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 60%, transparent), color-mix(in oklab, var(--background) 95%, transparent));
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@utility float-y { animation: floatY 6s ease-in-out infinite; }
