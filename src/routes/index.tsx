@@ -48,37 +48,42 @@ function Index() {
         </div>
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-2 md:px-8 md:py-28">
           <div>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[color:var(--gold)]/50 bg-white/60 px-3 py-1 text-xs uppercase tracking-[0.22em] text-[color:var(--maroon)]">
+            <div className="fade-up mb-5 inline-flex items-center gap-2 rounded-full border border-[color:var(--gold)]/50 bg-white/70 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.28em] text-[color:var(--maroon)] shadow-sm backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" /> Islamic Welfare · Since day one
             </div>
-            <h1 className="font-serif text-4xl leading-tight md:text-6xl">
-              Serving humanity with <span className="text-[color:var(--gold)]">dignity</span>, education, and Islamic values.
+            <h1 className="fade-up delay-1 font-serif text-[2.6rem] leading-[1.05] md:text-[4.25rem]">
+              Serving humanity with <span className="gold-underline text-[color:var(--maroon)]">dignity</span>, education, and Islamic values.
             </h1>
-            <p className="mt-5 text-lg text-muted-foreground">
+            <div className="fade-up delay-2 mt-6 flex items-center gap-3 text-[color:var(--gold)]"><span className="h-px w-10 bg-[color:var(--gold)]/60" /><span className="text-sm">۞</span><span className="h-px w-10 bg-[color:var(--gold)]/60" /></div>
+            <p className="fade-up delay-2 mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
               Hum zarurat mand logon ki madad izzat, amanat aur proper verification ke sath karte hain.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="fade-up delay-3 mt-8 flex flex-wrap gap-3">
               <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" className="btn-gold"><WhatsAppIcon /> Donate Now</a>
               <a href={waMessageLink(WA_PRESETS.help())} target="_blank" rel="noreferrer" className="btn-outline-maroon">Request Help</a>
               <a href={waMessageLink(WA_PRESETS.trial())} target="_blank" rel="noreferrer" className="btn-outline-maroon">Book Free Trial Class</a>
               <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp"><WhatsAppIcon/> WhatsApp</a>
             </div>
           </div>
-          <div className="hidden md:block" />
+          <div className="relative hidden md:block">
+            <div className="float-y absolute right-4 top-6 h-72 w-72 rounded-full border border-[color:var(--gold)]/40" aria-hidden />
+            <div className="float-y absolute right-16 top-24 h-56 w-56 rounded-full border border-[color:var(--gold)]/25" style={{ animationDelay: "1.5s" }} aria-hidden />
+          </div>
         </div>
       </section>
 
       {/* Services */}
       <Section>
         <SectionHeading eyebrow="What we do" title="Our Welfare & Education Services" subtitle="From ration and marriage support to online Quran classes, every effort is delivered with dignity." />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((s) => (
-            <Card key={s.t}>
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--cream)] text-[color:var(--maroon)]">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.9 6.5 19.5l1-6.3L3 8.9 9 8z"/></svg>
+            <Card key={s.t} className="group relative overflow-hidden">
+              <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--gold)]/60 to-transparent opacity-0 transition group-hover:opacity-100" />
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--cream)] text-[color:var(--maroon)] ring-1 ring-[color:var(--gold)]/40 transition group-hover:bg-[color:var(--gold)] group-hover:text-white">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.9 6.5 19.5l1-6.3L3 8.9 9 8z"/></svg>
               </div>
-              <h3 className="font-serif text-lg">{s.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+              <h3 className="font-serif text-xl">{s.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
             </Card>
           ))}
         </div>
@@ -89,11 +94,12 @@ function Index() {
         <div className="absolute inset-0 pattern-bg opacity-30" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
           <SectionHeading eyebrow="Our impact" title="Real people. Verified need. Lasting change." />
-          <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
             {STATS.map((s) => (
-              <div key={s.l} className="rounded-2xl bg-white/80 p-6 text-center shadow-sm">
-                <div className="font-serif text-3xl text-[color:var(--maroon)]">{s.n}</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{s.l}</div>
+              <div key={s.l} className="group rounded-2xl border border-[color:var(--gold)]/20 bg-white/85 p-6 text-center shadow-sm transition hover:-translate-y-1 hover:border-[color:var(--gold)]/60 hover:shadow-md">
+                <div className="font-serif text-4xl text-[color:var(--maroon)]">{s.n}</div>
+                <div className="mx-auto mt-2 h-px w-8 bg-[color:var(--gold)]/50 transition group-hover:w-12" />
+                <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{s.l}</div>
               </div>
             ))}
           </div>
