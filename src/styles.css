@@ -83,7 +83,7 @@
   --golden: #E49D2C;
   --softgray: #A8A6A4;
   --background: #F9F8F6;
-  --foreground: #373534;
+  --foreground: #2a2320;
   --card: #FFFFFF;
   --card-foreground: #373534;
   --popover: #FFFFFF;
@@ -93,7 +93,7 @@
   --secondary: #E1D7BC;
   --secondary-foreground: #48362F;
   --muted: #F1ECE1;
-  --muted-foreground: #6b6663;
+  --muted-foreground: #504842;
   --accent: #C4A05A;
   --accent-foreground: #48362F;
   --destructive: oklch(0.577 0.245 27.325);
