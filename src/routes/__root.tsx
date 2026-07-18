@@ -154,6 +154,12 @@ function RootComponent() {
 
 function SiteHeader() {
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const prev = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, [open]);
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
@@ -188,21 +194,53 @@ function SiteHeader() {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
       </div>
-      {open && (
-        <div className="border-t border-border bg-background xl:hidden">
-          <div className="mx-auto grid max-w-7xl gap-1 px-4 py-3">
-            {NAV.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-secondary">
-                {n.label}
-              </Link>
-            ))}
-            <div className="mt-2 flex gap-2">
-              <a href={WA_LINK} target="_blank" rel="noreferrer" className="btn-whatsapp !py-2 !px-4 text-sm flex-1"><WhatsAppIcon /> WhatsApp</a>
-              <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="btn-gold !py-2 !px-4 text-sm flex-1">Donate</a>
-            </div>
+      {/* Mobile drawer */}
+      <div
+        className={`fixed inset-0 z-[100] xl:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+        aria-hidden={!open}
+      >
+        {/* Overlay */}
+        <div
+          onClick={() => setOpen(false)}
+          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+        />
+        {/* Drawer */}
+        <aside
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-background shadow-2xl transition-transform duration-300 ease-out ${open ? "translate-x-0" : "translate-x-full"} flex flex-col`}
+        >
+          <div className="flex items-center justify-between border-b border-border px-4 py-3">
+            <img src={logo} alt="Al-Islah Institute" className="h-12 w-auto" style={{ maxWidth: 180 }} />
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="rounded-full border border-border p-2 text-foreground/80 hover:bg-secondary hover:text-[color:var(--maroon)]"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
           </div>
-        </div>
-      )}
+          <nav className="flex-1 overflow-y-auto px-3 py-4">
+            <div className="grid gap-1">
+              {NAV.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-secondary hover:text-[color:var(--maroon)]"
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+          <div className="border-t border-border p-4 flex gap-2">
+            <a href={WA_LINK} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="btn-whatsapp !py-2 !px-4 text-sm flex-1"><WhatsAppIcon /> WhatsApp</a>
+            <a href={waMessageLink(WA_PRESETS.donate())} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="btn-gold !py-2 !px-4 text-sm flex-1">Donate</a>
+          </div>
+        </aside>
+      </div>
     </header>
   );
 }
