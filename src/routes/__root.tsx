@@ -160,8 +160,21 @@ function SiteHeader() {
     if (open) document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = prev; };
   }, [open]);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const mq = window.matchMedia("(min-width: 1280px)");
+    const onChange = () => { if (mq.matches) setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    mq.addEventListener("change", onChange);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onChange);
+    };
+  }, []);
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
+    <>
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center" onClick={() => setOpen(false)} aria-label="Al-Islah Institute — Home">
           <img
@@ -194,11 +207,14 @@ function SiteHeader() {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
       </div>
-      {/* Mobile drawer */}
+      </header>
+      {/* Mobile drawer — rendered outside <header> because backdrop-blur creates
+          a containing block that would trap position: fixed children */}
       <div
-        className={`fixed inset-0 z-[100] xl:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-[100] xl:hidden ${open ? "pointer-events-auto visible" : "pointer-events-none invisible"}`}
         aria-hidden={!open}
       >
+
         {/* Overlay */}
         <div
           onClick={() => setOpen(false)}
@@ -241,7 +257,7 @@ function SiteHeader() {
           </div>
         </aside>
       </div>
-    </header>
+    </>
   );
 }
 
