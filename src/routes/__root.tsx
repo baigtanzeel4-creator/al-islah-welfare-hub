@@ -257,7 +257,7 @@ function SiteHeader() {
           </div>
         </aside>
       </div>
-    </header>
+    </>
   );
 }
 
